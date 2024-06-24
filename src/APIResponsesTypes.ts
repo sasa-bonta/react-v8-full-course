@@ -1,4 +1,4 @@
-export type Animal = "gog" | "cat" | "bird" | "reptile" | "rabbit";
+export type Animal = "dog" | "cat" | "bird" | "reptile" | "rabbit";
 
 export interface Pet {
   id: number;
