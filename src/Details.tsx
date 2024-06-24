@@ -8,10 +8,17 @@ import Modal from "./Modal";
 import AdoptedPetContext from "./AdoptedPetContext";
 
 const Details = () => {
+  const { id } = useParams();
+
+  if (!id) {
+    throw Error(
+      "Why did you not give me an id?!!! I wanted an id. I have no id."
+    );
+  }
+
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
-  const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
 
   if (results.isError) {
