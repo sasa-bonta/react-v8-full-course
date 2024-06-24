@@ -5,7 +5,7 @@ const AdoptedPetContext = createContext<[Pet, (adoptedPet: Pet) => void]>([
   {
     id: 1337,
     name: "Fido",
-    animal: "gog",
+    animal: "dog",
     description: "Lorem ipsum",
     breed: "Beagle",
     images: [],
