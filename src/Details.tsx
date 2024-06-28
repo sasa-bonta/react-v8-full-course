@@ -19,6 +19,7 @@ const Details = () => {
 
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  // @ts-ignore
   const results = useQuery<PetAPIResponse>(["details", id], fetchPet);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
@@ -35,6 +36,7 @@ const Details = () => {
     );
   }
 
+  // @ts-ignore
   const pet = results?.data?.pets[0];
 
   if (!pet) {
