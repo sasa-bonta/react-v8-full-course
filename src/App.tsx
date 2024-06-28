@@ -5,6 +5,7 @@ import Details from "./Details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
+import { Pet } from "./APIResponsesTypes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,12 +17,12 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const adoptedPet = useState(null);
+  const adoptedPet = useState(null as Pet | null);
 
   return (
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <AdoptedPetContext.Provider value={adoptedPet}>
+      <AdoptedPetContext.Provider value={adoptedPet}>
+        <QueryClientProvider client={queryClient}>
           <header>
             <Link to="/">Adopt Me!</Link>
           </header>
@@ -29,12 +30,17 @@ const App = () => {
             <Route path="details/:id" element={<Details />} />
             <Route path="/" element={<SearchParams />} />
           </Routes>
-        </AdoptedPetContext.Provider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </AdoptedPetContext.Provider>
     </BrowserRouter>
   );
 };
 
 const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("No container to render to");
+}
+
 const root = createRoot(container);
 root.render(<App />);

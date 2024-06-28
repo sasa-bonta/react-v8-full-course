@@ -24,7 +24,7 @@ const Details = () => {
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   if (results.isError) {
-    return <h2>ohno</h2>;
+    return <h2>oh no</h2>;
   }
 
   if (results.isLoading) {
